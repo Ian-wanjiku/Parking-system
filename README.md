@@ -1,6 +1,6 @@
 # Egesha
 
-Egesha (Swahili for "park") is a web-based parking system I built with Python, Flask and SQLite.
+Egesha is a web-based parking system I built with Python, Flask and SQLite for a school project.
 
 ## What it does
 
