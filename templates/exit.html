@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><h3>Vehicle exit</h3>
+<form method="post"><input name="plate" placeholder="Number plate" required><button>Calculate fee</button></form></div>
+{% if bill %}<div class="card">
+<h3>Bill for {{ bill.s.plate }}</h3>
+<p>Slot: {{ bill.s.slot_number }}<br>Entered: {{ bill.s.entry_time }}<br>Time parked: {{ bill.minutes }} minutes</p>
+<h2>Amount to pay: Kshs {{ bill.fee }}</h2>
+<form method="post" action="{{ url_for('pay') }}">
+<input type="hidden" name="plate" value="{{ bill.s.plate }}">
+<select name="method"><option>M-Pesa</option><option>Cash</option><option>Card</option></select>
+<button>Pay &amp; open barrier</button></form></div>{% endif %}{% endblock %}

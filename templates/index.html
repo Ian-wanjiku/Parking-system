@@ -1,0 +1,18 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><h2>Available slots: <span id="free">{{ free }}</span> / {{ total }}</h2>
+<div class="grid" id="grid">
+{% for s in slots %}<div class="slot {{ s.status }}">{{ s.slot_number }}</div>{% endfor %}
+</div><p>Green means free, red means occupied. The display refreshes every 5 seconds.</p></div>
+<div class="card"><h3>Vehicle entry</h3>
+<form method="post" action="{{ url_for('enter') }}">
+<input name="plate" placeholder="Number plate e.g. KDA123A" required>
+<button>Record entry</button></form></div>
+<script>
+async function refresh(){
+  const d = await (await fetch("{{ url_for('api_slots') }}")).json();
+  document.getElementById("free").textContent = d.free;
+  document.getElementById("grid").innerHTML =
+    d.slots.map(s => `<div class="slot ${s.status}">${s.slot_number}</div>`).join("");
+}
+setInterval(refresh, 5000);
+</script>{% endblock %}

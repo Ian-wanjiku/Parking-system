@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}
+<div class="card" style="text-align:center">
+<h1 style="color:#2e9e4f">BARRIER OPEN</h1>
+<p>{{ plate }} - parked {{ minutes }} min - paid Kshs {{ fee }} via {{ method }}</p>
+<p>Thank you. Drive safely.</p><a href="{{ url_for('index') }}">Back to home</a></div>{% endblock %}

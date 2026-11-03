@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}
+<div class="card"><h2>Today's revenue: Kshs {{ revenue }}</h2></div>
+<div class="card"><h3>Recent sessions</h3><table>
+<tr><th>Plate</th><th>Slot</th><th>Entry</th><th>Exit</th><th>Fee</th><th>Status</th></tr>
+{% for h in history %}<tr><td>{{ h.plate }}</td><td>{{ h.slot_number }}</td><td>{{ h.entry_time }}</td>
+<td>{{ h.exit_time or '-' }}</td><td>{{ h.fee if h.fee is not none else '-' }}</td><td>{{ h.status }}</td></tr>{% endfor %}
+</table></div>{% endblock %}

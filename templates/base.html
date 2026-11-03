@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Egesha</title>
+<style>
+ body{font-family:Calibri,Arial,sans-serif;margin:0;background:#f4f6f8;color:#222}
+ nav{background:#1b4332;padding:12px 24px}
+ nav a{color:#fff;margin-right:18px;text-decoration:none;font-weight:bold}
+ main{max-width:900px;margin:24px auto;padding:0 16px}
+ .card{background:#fff;border-radius:8px;padding:18px;margin-bottom:18px;box-shadow:0 1px 3px #0002}
+ input,select,button{padding:9px;font-size:1rem}
+ button{background:#1b4332;color:#fff;border:0;border-radius:5px;cursor:pointer}
+ .flash{padding:10px;border-radius:5px;margin-bottom:10px}
+ .ok{background:#d4edda}.error{background:#f8d7da}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:10px}
+ .slot{padding:16px 0;text-align:center;border-radius:6px;color:#fff;font-weight:bold}
+ .free{background:#2e9e4f}.occupied{background:#c0392b}
+ table{width:100%;border-collapse:collapse}th,td{padding:6px;border-bottom:1px solid #ddd;text-align:left}
+</style></head><body>
+<nav><a href="{{ url_for('index') }}">Entry &amp; Slots</a><a href="{{ url_for('exit_bill') }}">Exit &amp; Pay</a><a href="{{ url_for('admin') }}">Admin</a></nav>
+<main>
+{% for cat, msg in get_flashed_messages(with_categories=true) %}<div class="flash {{cat}}">{{ msg }}</div>{% endfor %}
+{% block body %}{% endblock %}
+</main></body></html>
